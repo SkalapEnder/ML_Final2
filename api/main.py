@@ -9,8 +9,10 @@ model = joblib.load('models/svm_model.pkl')
 vectorizer = joblib.load('models/tfidf_vectorizer.pkl')
 
 def clean_text(text):
-    text = re.sub(r'\W+', ' ', text.lower())
-    return ' '.join([w for w in text.split() if w not in stopwords.words('english')])
+    text = re.sub(r'\W', ' ', text)         
+    text = text.lower()                    
+    text = re.sub(r'\s+', ' ', text).strip() 
+    return text
 
 app = FastAPI()
 
