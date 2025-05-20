@@ -68,6 +68,46 @@ The project is machine learning web application that classifies user input text 
 └── README.md
 ```
 
+## Examples
+There are several input examples to check model:
+
+### Example 1
+Input:
+```
+Come out, dirty animal!
+```
+
+Output:
+```
+Predicted Labels: toxic, insult
+```
+
+
+### Example 2
+Input:
+```
+I’ll find you and kill you, stinking nerd.
+```
+
+Output:
+```
+Predicted Labels: toxic, threat, insult
+```
+
+### Example 3
+Input:
+```
+You're such a nasty piece of trash.
+```
+
+Output:
+```
+Predicted Labels: toxic, insult
+```
+
+
+
+
 ## Author
 
 Alisher Berik, IT-2308, Astana IT University
