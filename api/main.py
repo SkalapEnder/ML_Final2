@@ -12,7 +12,7 @@ def clean_text(text):
     text = re.sub(r'\W', ' ', text)         
     text = text.lower()                    
     text = re.sub(r'\s+', ' ', text).strip() 
-    return text
+    return ' '.join([w for w in text.split() if w not in stopwords.words('english')])
 
 app = FastAPI()
 

@@ -1,13 +1,16 @@
 import pandas as pd
 import joblib
 import re
+import nltk
+from nltk.corpus import stopwords
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.model_selection import train_test_split
 from sklearn.svm import LinearSVC
 from sklearn.multiclass import OneVsRestClassifier
 from sklearn.metrics import classification_report
 
-# Load data
+nltk.download('stopwords')
+
 df = pd.read_csv('data/train_clean.csv')
 
 # Labels
@@ -19,7 +22,7 @@ def clean_text(text):
     text = re.sub(r'\W', ' ', text)         
     text = text.lower()                    
     text = re.sub(r'\s+', ' ', text).strip() 
-    return text
+    return ' '.join([w for w in text.split() if w not in stopwords.words('english')])
 
 print("Cleaning data...")
 df['clean_comment'] = df['comment_text'].apply(clean_text)
