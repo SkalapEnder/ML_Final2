@@ -8,8 +8,8 @@ comment = st.text_area("Enter your comment:")
 if st.button("Classify"):
     if comment.strip():
         print("HERE")
-        response = requests.post("https://ml-final2-api.onrender.com/predict", json={"text": comment})
-        if response.status_code == 200:
+        response = requests.post("https://localhost:8000/predict", json={"text": comment})
+        if response.ok:
             labels = response.json()["labels"]
             st.success("Predicted Labels: " + ", ".join(labels) if labels else "Not toxic")
         else:
